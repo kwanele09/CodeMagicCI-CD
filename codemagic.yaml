@@ -18,12 +18,12 @@ workflows:
           $DOTNET nuget locals all --clear
           $DOTNET workload restore
           $DOTNET workload install maui maui-android maui-ios
-      - name: Restore MauiApp.Demo project
+      - name: Restore CodeMagicApp project
         script: |
-          $DOTNET restore MauiApp.Demo/MauiApp.Demo.csproj
-      - name: Build MauiApp.Demo project for Android
+          $DOTNET restore CodeMagicApp/CodeMagicApp.csproj
+      - name: Build CodeMagicApp project for Android
         script: |
-          $DOTNET build MauiApp.Demo/MauiApp.Demo.csproj -c Release -f net9.0-android --no-restore
+          $DOTNET build CodeMagicApp/CodeMagicApp.csproj -c Release -f net9.0-android --no-restore
     artifacts:
       - '**/*.apk'
       - '**/*.aab'
@@ -48,11 +48,11 @@ workflows:
           $DOTNET nuget locals all --clear
           $DOTNET workload restore
           $DOTNET workload install maui maui-ios
-      - name: Restore MauiApp.Demo project
+      - name: Restore CodeMagicApp project
         script: |
-          $DOTNET restore MauiApp.Demo/MauiApp.Demo.csproj
-      - name: Build MauiApp.Demo project for iOS Simulator
+          $DOTNET restore CodeMagicApp/CodeMagicApp.csproj
+      - name: Build CodeMagicApp project for iOS Simulator
         script: |
-          $DOTNET build MauiApp.Demo/MauiApp.Demo.csproj -c Debug -f net7.0-ios --no-restore -o ./artifacts
+          $DOTNET build CodeMagicApp/CodeMagicApp.csproj -c Debug -f net7.0-ios --no-restore -o ./artifacts
     artifacts:
       - ./artifacts/*.app
