@@ -20,7 +20,7 @@ workflows:
           $DOTNET workload install maui maui-android maui-ios
       - name: Restore CodeMagicApp project for Android
         script: |
-          $DOTNET restore CodeMagicApp/CodeMagicApp.csproj -f net9.0-android
+          $DOTNET restore CodeMagicApp/CodeMagicApp.csproj
       - name: Build CodeMagicApp project for Android
         script: |
           $DOTNET build CodeMagicApp/CodeMagicApp.csproj -c Release -f net9.0-android --no-restore
@@ -33,7 +33,7 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m2
     environment:
-      xcode: latest
+      xcode: 16.4
       vars:
         DOTNET_PATH: $CM_BUILD_DIR/dotnet
         DOTNET: $CM_BUILD_DIR/dotnet/dotnet
@@ -50,7 +50,7 @@ workflows:
           $DOTNET workload install maui maui-ios
       - name: Restore CodeMagicApp project for iOS
         script: |
-          $DOTNET restore CodeMagicApp/CodeMagicApp.csproj -f net9.0-ios
+          $DOTNET restore CodeMagicApp/CodeMagicApp.csproj
       - name: Build CodeMagicApp project for iOS Simulator
         script: |
           $DOTNET build CodeMagicApp/CodeMagicApp.csproj -c Debug -f net9.0-ios --no-restore -o ./artifacts
